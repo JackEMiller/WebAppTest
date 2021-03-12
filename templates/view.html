@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Insert into Database</title>
+</head>
+<body>
+<p>
+    welcome to the database
+    logged in as {{ user }}
+</p>
+<p>
+    <a href="{{ url_for('index') }}">Log out</a>
+</p>
+<p style="color:red">
+    {{ errortext }}
+</p>
+<table style width="100%">
+    <tr>
+        <th style="text-align:left" > Customer input </th>
+        <th style="text-align:left" > Product input </th>
+        <th style="text-align:left" > Transaction input </th>
+    </tr>
+    <tr>
+        <td>
+            <form name="customer"  method="POST">
+            <p>input first name</p>
+            <input name="fname">
+            <p>input second name</p>
+            <input name="sname">
+            <p> </p>
+                <button type="submit" name="submitbutton" value="customer">Submit</button>
+            </form>
+        </td>
+        <td>
+            <form name="product" method="POST">
+            <p>input name</p>
+            <input name="name">
+            <p>input price</p>
+            <input name="price">
+                <p></p>
+            <button type="submit" name="submitbutton" value="product">Submit</button>
+            </form>
+        </td>
+        <td>
+            <form name="transaction form"  method="POST">
+                <p> Customer: </p>
+                <select name= customer method="POST" action="/">
+                {% for customer in customers %}
+                <option value= "{{customer.id}} {{customer.first_name}}" SELECTED>{{customer.id}} {{customer.first_name}}</option>"
+                {% endfor %}
+                </select>
+                <p> Product </p>
+                <select name= product method="POST" action="/">
+                {% for product in products %}
+                <option value= "{{product.id}} {{product.name}}" SELECTED>{{product.id}} {{product.name}}</option>"
+                {% endfor %}
+                </select>
+                <p></p>
+                <button type="submit" name="submitbutton" value="transaction">Submit</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+    <th>Customers</th>
+        <th></th>
+    <th>Products</th>
+    </tr>
+    <tr>
+        <td>
+            <div class="table1">
+        {% if customers|length < 1 %}
+    <h4 style="text-align: center">empty table<a href="/view/0">add some data</a> </h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Actions</th>
+        </tr>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.first_name }}</td>
+                <td>{{ customer.last_name }}</td>
+                <td>
+                    <a href="/deletecustomer/{{customer.id}}">Delete</a>
+                    <br>
+                    <a href="/updatecustomer/{{customer.id}}">Update</a>
+                    <br>
+                    <a href="/viewtransaction/{{customer.id}}">Transactions</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+        </td>
+        <td>
+
+        </td>
+        <td>
+            <div class="table2">
+        {% if products|length < 1 %}
+    <h4 style="text-align: center">empty table<a href="/view/0">add some data</a> </h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="/deleteproduct/{{product.id}}">Delete</a>
+                    <br>
+                    <a href="/updateproduct/{{product.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+</body>
+</html>

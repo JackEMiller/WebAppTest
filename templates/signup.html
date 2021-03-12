@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+</head>
+<body>
+<p>
+    Create a user profile
+</p>
+<p>
+            <form name="login"  method="POST">
+            <p>input user name</p>
+            <input name="Username">
+            <p>input password</p>
+            <input name="Password">
+            <p> </p>
+                <button type="submit" name="submitbutton" value="customer">Create Profile</button>
+            </form>
+<p style="color:red">
+    {{ errortext }}
+</p>
+</body>
+</html>

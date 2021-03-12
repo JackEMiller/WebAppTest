@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Transaction</title>
+</head>
+<body>
+<form name="transaction form"  method="POST">
+    <p> Update given transaction: </p>
+    <p> Customer: </p>
+    <select name= customer method="GET" action="/">
+    {% for customer in customers %}
+    <option value= "{{customer}}" SELECTED>{{customer}}</option>"
+    {% endfor %}
+    </select>
+    <p> Product </p>
+    <select name= product method="GET" action="/">
+    {% for product in products %}
+    <option value= "{{product}}" SELECTED>{{product}}</option>"
+    {% endfor %}
+    </select>
+    <button type="submit" name="submitbutton" value="transaction">Submit</button>
+    </form>
+</body>
+</html>

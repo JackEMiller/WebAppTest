@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Transactions</title>
+</head>
+<body>
+<p> <a href="/view/0">go back</a></p>
+    <div class="table1">
+        {% if products|length < 1 %}
+    <h4 style="text-align: center">Customer has no transactions<a href="/view/0">add one here</a> </h4>
+    {% else %}
+        <p> Products bought by {{ customer[0] }}</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>
+                    {{ product[0] }}
+                </td>
+                <td>
+                    {{ product[1] }}
+                </td>
+                <td>
+                    <a href="/deletetransaction/{{customer[1]}}/{{product[2]}}">Delete</a>
+                    <br>
+                    <a href="/updatetransaction/{{customer[1]}}/{{product[2]}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+</head>
+<body>
+<p>
+    this is the home page, please login below or <a href="{{ url_for('signup') }}">sign up here</a>
+</p>
+<p>
+            <form name="login"  method="POST">
+            <p>input user name</p>
+            <input name="Username">
+            <p>input password</p>
+            <input name="Password">
+            <p> </p>
+                <button type="submit" name="submitbutton" value="customer">Log In</button>
+            </form>
+</p>
+<p style="color:red">
+        {{ errortext }}
+</p>
+</body>
+</html>
